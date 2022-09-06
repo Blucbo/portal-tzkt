@@ -1,0 +1,16 @@
+<p>block-list works!</p>
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Proposer</th>
+    <th>Timestamp</th>
+    <th>Number transactions</th>
+  </tr>
+  <tr *ngFor="let block of blockList$ | async">
+    <td>{{block.level}}</td>
+    <td>{{block.proposer | json}}</td>
+    <td>{{block.timestamp}}</td>
+    <td>{{block.numberTransactions}}</td>
+  </tr>
+
+</table>
