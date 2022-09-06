@@ -2,7 +2,7 @@
 <table>
   <tr>
     <th>Level</th>
-    <th>Proposer</th>
+    <th>Proposer</th> 
     <th>Timestamp</th>
     <th>Number transactions</th>
   </tr>
@@ -12,5 +12,9 @@
     <td>{{block.timestamp}}</td>
     <td>{{block.numberTransactions}}</td>
   </tr>
-
+  <div class="pagination">
+    <button class="pagination-previous" [class.is-disabled]="!(pageNumber$ | async)" (click)="previousPage()">Previous</button>
+    <button class="pagination-next" (click)="nextPage()">Next page</button>
+  </div>
+  <pre>{{pageNumber$ | async}}</pre>
 </table>

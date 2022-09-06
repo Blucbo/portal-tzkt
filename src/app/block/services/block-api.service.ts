@@ -11,9 +11,10 @@ export class BlockApiService {
 
   constructor(private http: HttpClient) { }
 
-  // todo: query params
-  getBlocks$(): Observable<Block[]> {
-    return this.http.get<Block[]>(`${environment.api}v1/blocks?sort.desc=level&limit=10`);
+  // todo: query params offset.pg=1
+  // todo: create header object with query params
+  getBlocks$(page: number): Observable<Block[]> {
+    return this.http.get<Block[]>(`${environment.api}v1/blocks?sort.desc=level&limit=10&offset.pg=${page}`);
   }
 
   // rename or move to another service
@@ -21,8 +22,8 @@ export class BlockApiService {
     return this.http.get<number>(`${environment.api}v1/operations/transactions/count?level=${level}`);
   }
 
-  getBlockListInfo$(): Observable<BlockView[]> {
-    return this.getBlocks$().pipe(
+  getBlockListInfo$(page: number): Observable<BlockView[]> {
+    return this.getBlocks$(page).pipe(
       concatMap((list: Block[]) => from(list)),
       concatMap(block => forkJoin([
           of(block),

@@ -9,6 +9,7 @@ import { BlockListService } from '../../services/block-list.service';
 export class BlockListComponent implements OnInit {
 
   blockList$ = this.blockListService.list$;
+  pageNumber$ = this.blockListService.pageNumber$;
 
   constructor(
     private blockListService: BlockListService,
@@ -16,6 +17,14 @@ export class BlockListComponent implements OnInit {
 
   ngOnInit(): void {
     this.blockListService.init()
+  }
+
+  nextPage() {
+    this.blockListService.nextPage();
+  }
+
+  previousPage() {
+    this.blockListService.previousPage();
   }
 
 }
