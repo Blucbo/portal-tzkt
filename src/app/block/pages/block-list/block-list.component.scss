@@ -1,11 +1,7 @@
-table {
-  width: 100%;
-}
+.row-link {
+  cursor: pointer;
 
-td {
-  text-align: center;
-}
-
-.is-disabled {
-  pointer-events: none;
+  &:hover {
+    background-color: aliceblue;
+  }
 }

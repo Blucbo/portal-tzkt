@@ -1,29 +1,28 @@
 import { Injectable } from '@angular/core';
 import { take, takeUntil, tap } from 'rxjs';
-import { BlockView } from '../model';
+import { TransactionView } from '../model';
 import { AbstractDataTable } from './abstract-data-table';
 import { BlockApiService, LIMIT } from './block-api.service';
 
 @Injectable()
-export class BlockListService extends AbstractDataTable<BlockView>  {
+export class BlockDetailService extends AbstractDataTable<TransactionView> {
   constructor(
     private blockApiService: BlockApiService,
   ) {
     super();
-    this.init();
   }
 
-  init(): void {
+  init(level: number): void {
     this.page$.pipe(
       tap(page => {
-        this.loadData(page);
+        this.loadData(level, page);
       }),
-      takeUntil(this.destroy$),
+      takeUntil(this.destroy$)
     ).subscribe();
   }
 
-  loadData(page: number): void {
-    this.blockApiService.getBlockListInfo$(page)
+  loadData(level: number, page: number) {
+    this.blockApiService.getDetailInfo$(level, page)
       .pipe(
         take(1)
       )
@@ -32,5 +31,4 @@ export class BlockListService extends AbstractDataTable<BlockView>  {
         this.dateList$.next(list);
     })
   }
-
 }

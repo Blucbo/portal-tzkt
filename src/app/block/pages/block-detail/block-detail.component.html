@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Sender</th>
+    <th>Target</th> 
+    <th>Amount</th>
+    <th>Status</th>
+  </tr>
+  <tr 
+    *ngFor="let trx of list$ | async"
+  >
+    <td>{{trx.sender.alias}}</td>
+    <td>{{trx.target.address}}</td>
+    <td>{{trx.amount}}</td>
+    <td>{{trx.status}}</td>
+  </tr>
+  <div class="pagination">
+    <button class="pagination-previous" [class.is-disabled]="!(pageNumber$ | async)" (click)="previousPage()">Previous</button>
+    <button class="pagination-next" [class.is-disabled]="!(hasNextPage$ | async)" (click)="nextPage()">Next page</button>
+  </div>
+</table>

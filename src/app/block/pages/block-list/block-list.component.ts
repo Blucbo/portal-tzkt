@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BlockListService } from '../../services/block-list.service';
 
 @Component({
@@ -6,18 +6,15 @@ import { BlockListService } from '../../services/block-list.service';
   templateUrl: './block-list.component.html',
   styleUrls: ['./block-list.component.scss']
 })
-export class BlockListComponent implements OnInit {
+export class BlockListComponent {
 
-  blockList$ = this.blockListService.list$;
-  pageNumber$ = this.blockListService.pageNumber$;
-
+  readonly blockList$ = this.blockListService.vmList$;
+  readonly pageNumber$ = this.blockListService.pageNumber$;
+  readonly hasNextPage$ = this.blockListService.hasNextPage$;
+  
   constructor(
     private blockListService: BlockListService,
   ) { }
-
-  ngOnInit(): void {
-    this.blockListService.init()
-  }
 
   nextPage() {
     this.blockListService.nextPage();

@@ -1,8 +1,14 @@
-import { Baker } from "./block-dto-model";
+import { Baker, Block, Hash } from "./block-dto-model";
 
-export interface BlockView {
-  level: number;
-  proposer: Baker;
-  timestamp: Date;
+export type BlockView = Pick<Block, 'level' | 'proposer' | 'timestamp'> & {
   numberTransactions: number;
+};
+
+export interface TransactionView {
+  sender: Baker;
+  target: {
+    address: Hash;
+  };
+  amount: number;
+  status: string;
 }

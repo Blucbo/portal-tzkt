@@ -1,8 +1,8 @@
 export interface Block {
   cycle:                         number;
-  level:                         number;  // should show
+  level:                         number;
   hash:                          Hash;
-  timestamp:                     Date;  // should show
+  timestamp:                     Date;
   proto:                         number;
   payloadRound:                  number;
   blockRound:                    number;
@@ -12,7 +12,7 @@ export interface Block {
   bonus:                         number;
   fees:                          number;
   nonceRevealed:                 boolean;
-  proposer:                      Baker; // should show
+  proposer:                      Baker;
   producer:                      Baker;
   software:                      Software;
   lbToggle:                      boolean;
@@ -28,7 +28,7 @@ export interface Block {
   nonceRevelations:              NonceRevelation[];
   delegations:                   Delegation[];
   originations:                  Tion[];
-  transactions:                  Tion[];  // should show
+  transactions:                  Tion[];
   reveals:                       Reveal[];
   registerConstants:             RegisterConstant[];
   setDepositsLimits:             RegisterConstant[];

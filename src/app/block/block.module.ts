@@ -5,11 +5,14 @@ import { BlockRoutingModule } from './block-routing.module';
 import { BlockListComponent } from './pages/block-list/block-list.component';
 import { BlockApiService } from './services/block-api.service';
 import { BlockListService } from './services/block-list.service';
+import { BlockDetailComponent } from './pages/block-detail/block-detail.component';
+import { BlockDetailService } from './services/block-detail.service';
 
 
 @NgModule({
   declarations: [
-    BlockListComponent
+    BlockListComponent,
+    BlockDetailComponent
   ],
   imports: [
     HttpClientModule,
@@ -19,6 +22,7 @@ import { BlockListService } from './services/block-list.service';
   providers: [
     BlockApiService,
     BlockListService,
+    BlockDetailService,
   ]
 })
 export class BlockModule { }
